@@ -14,6 +14,7 @@ import ru.pk.core.ui.theme.MonstersTheme
 fun NavGraph(
     modifier: Modifier = Modifier,
     isDarkTheme: Boolean,
+    onStartClick: () -> Unit
 ) {
 
    MonstersTheme {
@@ -28,7 +29,7 @@ fun NavGraph(
             ) {
 
                 composable<Screen.Start> {
-                    StartScreen(modifier)
+                    StartScreen(modifier, onStartClick)
                 }
 
             }

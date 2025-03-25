@@ -10,11 +10,11 @@ interface Api {
 
     @Headers("Accept: application/json")
     @GET("2014/monsters")
-    suspend fun getMonstersList(): ru.pk.repository.api.model.ResponseMonsters
+    suspend fun getMonstersList(): ResponseMonsters
 
     @Headers("Accept: application/json")
     @GET("2014/monsters/{index}")
     suspend fun getMonster(
         @Path("index") index: String
-    ): ru.pk.repository.api.model.MonsterFull
+    ): MonsterFull
 }

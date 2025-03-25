@@ -1,6 +1,7 @@
 plugins {
+    kotlin("kapt")
     id("com.google.devtools.ksp")
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
@@ -9,11 +10,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.pk.repository"
         minSdk = 34
-        targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,4 +48,9 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+    implementation(project(":core"))
 }

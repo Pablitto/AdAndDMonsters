@@ -69,4 +69,5 @@ dependencies {
 
     implementation(project(":monsters"))
     implementation(project(":core"))
+    implementation(project(":repository"))
 }

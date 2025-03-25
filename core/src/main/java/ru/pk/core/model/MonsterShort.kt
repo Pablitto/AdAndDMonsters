@@ -1,7 +1,7 @@
-package ru.pk.repository.api.model
+package ru.pk.core.model
 
 data class MonsterShort(
     val index: String,
     val name: String?,
-    val url: String?
+    val imageUrl: String?
 )
