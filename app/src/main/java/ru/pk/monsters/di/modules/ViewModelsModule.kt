@@ -9,7 +9,6 @@ import ru.pk.monsters.presentation.view_model.MonstersListViewModelImpl
 
 
 @Module
-//    (includes = [ToolsModule::class, EventSourceModule::class])
 object ViewModelsModule {
 
     @ActivityScope

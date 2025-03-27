@@ -20,6 +20,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import ru.pk.core.ui.theme.MonstersTheme
 import ru.pk.monsters.MonstersApp
+import ru.pk.monsters.viewModel.MonstersViewModelFactory
 import ru.pk.repository.interfaces.MonstersRepository
 import javax.inject.Inject
 
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
 
 
     @Inject
-    lateinit var repository: MonstersRepository
+    lateinit var viewModelFactory: MonstersViewModelFactory
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,19 +55,10 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }) { innerPadding ->
-                    ru.pk.monsters.navigation.NavGraph(
+                    ru.pk.monsters.navigation.MonstersNavGraph(
                         modifier = Modifier.padding(innerPadding),
                         isSystemInDarkTheme(),
-                        {
-                            MainScope().launch (Dispatchers.Default) {
-                                Log.i("jopa", "click!")
-                                repository.getMonstersList().also {
-                                    it.forEach { monster ->
-                                        Log.i("jopa", monster.name ?: "noname")
-                                    }
-                                }
-                            }
-                        }
+                        viewModelFactory
                     )
                 }
             }

@@ -1,4 +1,4 @@
-package ru.pk.monsters.ui.screen
+package ru.pk.monsters.presentation.screen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

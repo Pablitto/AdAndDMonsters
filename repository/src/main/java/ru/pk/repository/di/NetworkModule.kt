@@ -12,8 +12,6 @@ import javax.inject.Singleton
 @Module
 object NetworkModule {
 
-    private const val BASE_URL = "https://www.dnd5eapi.co/api/"
-
     // working
     @Singleton
     @Provides
@@ -25,7 +23,7 @@ object NetworkModule {
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .build())
-            .baseUrl(BASE_URL)
+            .baseUrl(Api.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         return retrofit.create(Api::class.java)
@@ -42,15 +40,7 @@ object NetworkModule {
 //    @Provides
 //    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
 //        Retrofit.Builder()
-//            .client(
-////                OkHttpClient()
-////                    .newBuilder()
-////                    .connectTimeout(10, TimeUnit.SECONDS)
-////                    .readTimeout(10, TimeUnit.SECONDS)
-////                    .writeTimeout(10, TimeUnit.SECONDS)
-////                    .build()
-//                okHttpClient
-//            )
+//            .client(okHttpClient)
 //            .baseUrl(BASE_URL)
 //            .addConverterFactory(GsonConverterFactory.create())
 //            .build()
