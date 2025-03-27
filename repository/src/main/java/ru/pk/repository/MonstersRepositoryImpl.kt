@@ -18,8 +18,8 @@ class MonstersRepositoryImpl
 @Inject constructor(
     val api: Api,
     @Named("AppContext") context: Context,
-//        val roomDatabase: RoomDatabase
-//        val local: LocalDataWrapper
+        val roomDatabase: RoomDatabase,
+        val local: LocalDataWrapper
 ) : MonstersRepository {
 
 //    private val roomDatabase = Room.databaseBuilder(context, Database::class.java, "monsters_db")

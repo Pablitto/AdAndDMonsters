@@ -1,12 +1,10 @@
 plugins {
-    kotlin("kapt")
-    id("com.google.devtools.ksp")
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "ru.pk.repository"
+    namespace = "ru.pk.repository_api"
     compileSdk = 35
 
     defaultConfig {
@@ -33,23 +31,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    api(libs.retrofit)
-    implementation(libs.gson)
-
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
-
-    implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
-
     implementation(project(":core"))
 }

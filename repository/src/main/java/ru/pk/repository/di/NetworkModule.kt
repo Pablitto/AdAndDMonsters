@@ -13,45 +13,45 @@ import javax.inject.Singleton
 object NetworkModule {
 
     // working
+//    @Singleton
+//    @Provides
+//    fun providesApi(): Api {
+//        val retrofit =  Retrofit.Builder()
+//            .client( OkHttpClient()
+//                .newBuilder()
+//                .connectTimeout(10, TimeUnit.SECONDS)
+//                .readTimeout(10, TimeUnit.SECONDS)
+//                .writeTimeout(10, TimeUnit.SECONDS)
+//                .build())
+//            .baseUrl(Api.BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//        return retrofit.create(Api::class.java)
+//    }
+
+    // not working
     @Singleton
     @Provides
-    fun providesApi(): Api {
-        val retrofit =  Retrofit.Builder()
-            .client( OkHttpClient()
-                .newBuilder()
-                .connectTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .build())
+    fun providesApi(retrofit: Retrofit): Api =
+        retrofit.create(Api::class.java)
+
+    // not working
+    @Singleton
+    @Provides
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .client(okHttpClient)
             .baseUrl(Api.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        return retrofit.create(Api::class.java)
-    }
 
     // not working
-//    @Singleton
-//    @Provides
-//    fun providesApi(retrofit: Retrofit): Api =
-//        retrofit.create(Api::class.java)
-
-    // not working
-//    @Singleton
-//    @Provides
-//    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
-//        Retrofit.Builder()
-//            .client(okHttpClient)
-//            .baseUrl(BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-
-    // not working
-//    @Provides
-//    fun provideHttpClient(): OkHttpClient =
-//        OkHttpClient()
-//            .newBuilder()
-//            .connectTimeout(10, TimeUnit.SECONDS)
-//            .readTimeout(10, TimeUnit.SECONDS)
-//            .writeTimeout(10, TimeUnit.SECONDS)
-//            .build()
+    @Provides
+    fun provideHttpClient(): OkHttpClient =
+        OkHttpClient()
+            .newBuilder()
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .build()
 }

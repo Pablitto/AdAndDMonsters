@@ -12,9 +12,9 @@ import javax.inject.Singleton
 @Module
 object DatabaseModule {
 
-//    @Provides
-//    @Singleton
-//    fun getRoomDatabase(@Named("AppContext") context: Context): RoomDatabase =
-//        Room.databaseBuilder(context, Database::class.java, "monsters_db")
-//            .fallbackToDestructiveMigration().build()
+    @Provides
+    @Singleton
+    fun getRoomDatabase(@Named("AppContext") context: Context): RoomDatabase =
+        Room.databaseBuilder(context, Database::class.java, "monsters_db")
+            .fallbackToDestructiveMigration().build()
 }
